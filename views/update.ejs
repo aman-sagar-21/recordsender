@@ -2,44 +2,47 @@
     <div class="container">
         <div class="columns">
             <div class="column">
-                <h3 class="title mb-2 is-3">Edit Record</h3>
-                <form action="/update/<%=record._id%>?_method=put" method="post" class="mb-6">
-                    <div class="field">
-                        <!-- <label class="label">Name</label> -->
-                        <div class="control has-icons-left">
-                            <input class="input" name="record[name]" id="name" type="text" placeholder="Name" value="<%=record.name%>">
-                            <span class="icon is-small is-left"><i class="fas fa-user-circle"></i></span>
+                <div class="boxforform updateform">
+                    <h3 class="title mb-2 is-3">Edit Record</h3>
+                    <form action="/update/<%=record._id%>?_method=put" method="post" class="mb-6">
+                        <div class="field">
+                            <!-- <label class="label">Name</label> -->
+                            <div class="control has-icons-left">
+                                <input class="input" name="record[name]" id="name" type="text" placeholder="Name" value="<%=record.name%>">
+                                <span class="icon is-small is-left"><i class="fas fa-user-circle"></i></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <!-- <label class="label">Name</label> -->
-                        <div class="control has-icons-left">
-                            <input class="input" name="record[phone]" id="phone" type="tel" placeholder="Phone No." value="<%=record.phone%>" maxlength="10">
-                            <span class="icon is-small is-left"><i class="fas fa-phone"></i></span>
+                        <div class="field">
+                            <!-- <label class="label">Name</label> -->
+                            <div class="control has-icons-left">
+                                <input class="input" name="record[phone]" id="phone" type="tel" placeholder="Phone No." value="<%=record.phone%>" maxlength="10">
+                                <span class="icon is-small is-left"><i class="fas fa-phone"></i></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <!-- <label class="label">Email</label> -->
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" name="record[email]" , id="email" type="email" placeholder="Email" value="<%=record.email%>">
-                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" name="record[email]" , id="email" type="email" placeholder="Email" value="<%=record.email%>">
+                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <div class="field">
-                        <!-- <label class="label">Hobbies</label> -->
+                        <div class="field">
+                            <!-- <label class="label">Hobbies</label> -->
+                            <div class="control">
+                                <textarea class="textarea" name="record[hobbies]" id="hobbies" placeholder="Hobbies" style="resize:none;" maxlength="120"><%=record.hobbies%></textarea>
+                            </div>
+                        </div>
                         <div class="control">
-                            <textarea class="textarea" name="record[hobbies]" id="hobbies" placeholder="Hobbies" style="resize:none;" maxlength="120"><%=record.hobbies%></textarea>
+                            <button class="button is-primary">Update</button>
                         </div>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link">Update</button>
-                    </div>
-                </form>
-                <form action="/<%=record._id%>?_method=delete" method="post">
-                    <button class="button is-danger">Delete Record</button>
-                </form>
+                    </form>
+                    <form action="/<%=record._id%>?_method=delete" method="post">
+                        <button class="button is-danger">Delete Record</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
