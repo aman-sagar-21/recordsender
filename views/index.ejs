@@ -1,0 +1,126 @@
+<%layout('layouts/boilerplate')%>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+
+
+    <div class="container">
+        <!-- Form -->
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <h3 class="title mb-2 is-3">Add New Record</h3>
+                <form action="/" method="post">
+                    <div class="field">
+                        <!-- <label class="label">Name</label> -->
+                        <div class="control has-icons-left">
+                            <input class="input" name="record[name]" id="name" type="text" placeholder="Name">
+                            <span class="icon is-small is-left"><i class="fas fa-user-circle"></i></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <!-- <label class="label">Name</label> -->
+                        <div class="control has-icons-left">
+                            <input class="input" name="record[phone]" id="phone" type="tel" placeholder="Phone No." value="" maxlength="10">
+                            <span class="icon is-small is-left"><i class="fas fa-phone"></i></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <!-- <label class="label">Email</label> -->
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" name="record[email]" , id="email" type="email" placeholder="Email" value="">
+                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <!-- <label class="label">Hobbies</label> -->
+                        <div class="control">
+                            <textarea class="textarea" name="record[hobbies]" id="hobbies" placeholder=" Your two best hobbies" style="resize:none;" maxlength="50"></textarea>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- Record Table -->
+            <div class="column ">
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Hobbies</th>
+                            <th>Update, Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(!records.length){%>
+                            <tr>
+                                <th colspan="7">
+                                    <p>No records available right now</p>
+                                </th>
+                            </tr>
+                            <%}else{%>
+                                <form action="/sendmail" method="post">
+
+                                    <%for(let record of records){%>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="<%=record._id%>" id="<%=record._id%>" value="<%=record._id%>">
+                                            </td>
+                                            <td>
+                                                <%=record._id%>
+                                            </td>
+                                            <td>
+                                                <%=record.name%>
+                                            </td>
+                                            <td>
+                                                <%=record.phone%>
+                                            </td>
+                                            <td>
+                                                <%=record.email%>
+                                            </td>
+                                            <td>
+                                                <%=record.hobbies%>
+                                            </td>
+                                            <td>
+                                                <div class="columns">
+                                                    <div class="column is-half">
+                                                        <a href="/update/<%=record._id%>" class="button is-primary">Update/Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <%}%>
+                                            <tr>
+                                                <td colspan="7"><button type="submit" class="button is-primary">Send</button></td>
+                                            </tr>
+                                </form>
+                                <%}%>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
